@@ -7,12 +7,19 @@ use App\Http\Controllers\CursoController;       // se esta agregando en uso del 
 
 Route::get('/', HomeController::class);         //le estame diciendo que se dirija al archico HomeController
 
+Route::controller(CursoController::class)->group(function(){    //estoy indicando se va a utilizar el mismo controlados para la lineas de abajo ojo debe utilizar el mismo controlador
+    Route::get('cursos', 'index');              // se indica las funcion o metodo que va a utilizar
+    Route::get('cursos/create', 'create');
+    Route::get('cursos/{data}', 'show');
+});
+
+/*
 Route::get('cursos', [CursoController::class, 'index']);        //se esta haciendo un array para mandar dos paramtros que se conetec a la clase CursoControlle y a la funcion index
 
 Route::get('cursos/create', [CursoController::class, 'create']);    //array [clase curso controlado, funcion create]
 
 Route::get('cursos/{data}', [CursoController::class, 'show']);      //array [clase curso controlado, funcion show]
-
+*/
 /*
 |--------------------------------------------------------------------------
 | Web Routes
